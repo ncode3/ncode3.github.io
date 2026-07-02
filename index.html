@@ -52,6 +52,14 @@
         transition: max-height 0.2s ease-out;
         background-color: #f1f1f1;
       }
+
+      .formspree-honeypot {
+        position: absolute;
+        left: -5000px;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+      }
     </style>
   </head>
 
@@ -293,21 +301,31 @@
     <div id="contact">
       <h2>Get in Touch</h2>
       <div id="contact-form">
-        <form method="POST" action="https://formspree.io/xknqaorj">
+        <form method="POST" action="https://formspree.io/f/xknqaorj">
           <input
             type="hidden"
             name="_subject"
             value="Contact request from personal website"
           />
           <input
+            class="formspree-honeypot"
+            type="text"
+            name="_gotcha"
+            tabindex="-1"
+            autocomplete="off"
+            aria-hidden="true"
+          />
+          <input
             type="email"
             name="_replyto"
             placeholder="Your email"
+            maxlength="254"
             required
           />
           <textarea
             name="message"
             placeholder="Your message"
+            maxlength="1200"
             required
           ></textarea>
           <button type="submit">Send</button>
